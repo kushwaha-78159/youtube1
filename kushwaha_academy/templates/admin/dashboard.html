@@ -1,0 +1,81 @@
+# Create admin/dashboard.html
+cat > templates/admin/dashboard.html << 'EOF'
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Articles</h5>
+                    <p class="card-text display-4">{{ article_count }}</p>
+                    <a href="{{ url_for('admin_articles') }}" class="text-white">Manage Articles →</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Blogs</h5>
+                    <p class="card-text display-4">{{ blog_count }}</p>
+                    <a href="{{ url_for('admin_blogs') }}" class="text-white">Manage Blogs →</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Stories</h5>
+                    <p class="card-text display-4">{{ story_count }}</p>
+                    <a href="{{ url_for('admin_stories') }}" class="text-white">Manage Stories →</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Courses</h5>
+                    <p class="card-text display-4">{{ course_count }}</p>
+                    <a href="{{ url_for('admin_courses') }}" class="text-white">Manage Courses →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>NISM Test Management</h5>
+                </div>
+                <div class="card-body">
+                    <a href="{{ url_for('admin_books') }}" class="btn btn-primary">Manage Books & Chapters</a>
+                    <a href="{{ url_for('admin_questions') }}" class="btn btn-success">Manage Questions</a>
+                    <a href="{{ url_for('admin_upload_csv') }}" class="btn btn-info">Upload CSV Questions</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>User Management</h5>
+                </div>
+                <div class="card-body">
+                    <p>Total Users: {{ user_count }}</p>
+                    <a href="{{ url_for('admin_users') }}" class="btn btn-primary">Manage Users</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+EOF

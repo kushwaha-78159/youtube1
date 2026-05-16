@@ -1,0 +1,32 @@
+# Create courses.html
+cat > templates/courses.html << 'EOF'
+{% extends "base.html" %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Our Courses</h1>
+
+<div class="row">
+    {% for course in courses %}
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ course.name }}</h5>
+                <p class="card-text">{{ course.description }}</p>
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/{{ course.youtube_link.split('v=')[-1].split('&')[0] }}" 
+                            title="{{ course.name }}" 
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <p class="text-center">No courses available yet.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+EOF

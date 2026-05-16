@@ -1,0 +1,25 @@
+# Create story_detail.html
+cat > templates/story_detail.html << 'EOF'
+{% extends "base.html" %}
+
+{% block title %}{{ story.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            {% if story.thumbnail %}
+            <img src="{{ url_for('static', filename='uploads/' + story.thumbnail) }}" class="card-img-top" alt="{{ story.title }}">
+            {% endif %}
+            <div class="card-body">
+                <h1 class="card-title">{{ story.title }}</h1>
+                <p class="text-muted">Published: {{ story.created_at.strftime('%B %d, %Y') }}</p>
+                <div class="content-markdown">
+                    {{ story.html_content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+EOF

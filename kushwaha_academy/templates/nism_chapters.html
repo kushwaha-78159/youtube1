@@ -1,0 +1,27 @@
+# Create nism_chapters.html
+cat > templates/nism_chapters.html << 'EOF'
+{% extends "base.html" %}
+
+{% block title %}{{ book.name }} - Chapters{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ book.name }}</h1>
+
+<div class="row">
+    {% for chapter in chapters %}
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ chapter.name }}</h5>
+                <a href="{{ url_for('nism_test', chapter_id=chapter.id) }}" class="btn btn-primary">Take Test</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <p class="text-center">No chapters available for this book.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+EOF

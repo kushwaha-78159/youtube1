@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center mb-5">
+        <h1 class="display-4">Welcome to Kushwaha Academy</h1>
+        <p class="lead">Your premier destination for learning and knowledge</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-newspaper fa-3x mb-3"></i>
+                <h5 class="card-title">Articles</h5>
+                <p class="card-text">Read insightful articles on various topics</p>
+                <a href="{{ url_for('articles') }}" class="btn btn-primary">Explore Articles</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-blog fa-3x mb-3"></i>
+                <h5 class="card-title">Blogs</h5>
+                <p class="card-text">Stay updated with our latest blogs</p>
+                <a href="{{ url_for('blogs') }}" class="btn btn-primary">Read Blogs</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-book-open fa-3x mb-3"></i>
+                <h5 class="card-title">Stories</h5>
+                <p class="card-text">Inspiring stories to motivate you</p>
+                <a href="{{ url_for('stories') }}" class="btn btn-primary">Read Stories</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-graduation-cap fa-3x mb-3"></i>
+                <h5 class="card-title">NISM Mock Tests</h5>
+                <p class="card-text">Prepare for NISM certification with our tests</p>
+                <a href="{{ url_for('nism_home') }}" class="btn btn-primary">Take Tests</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-video fa-3x mb-3"></i>
+                <h5 class="card-title">Courses</h5>
+                <p class="card-text">Learn from our video courses</p>
+                <a href="{{ url_for('courses') }}" class="btn btn-primary">View Courses</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

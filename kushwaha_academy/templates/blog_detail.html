@@ -1,0 +1,25 @@
+# Create blog_detail.html
+cat > templates/blog_detail.html << 'EOF'
+{% extends "base.html" %}
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            {% if blog.thumbnail %}
+            <img src="{{ url_for('static', filename='uploads/' + blog.thumbnail) }}" class="card-img-top" alt="{{ blog.title }}">
+            {% endif %}
+            <div class="card-body">
+                <h1 class="card-title">{{ blog.title }}</h1>
+                <p class="text-muted">Published: {{ blog.created_at.strftime('%B %d, %Y') }}</p>
+                <div class="content-markdown">
+                    {{ blog.html_content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+EOF
