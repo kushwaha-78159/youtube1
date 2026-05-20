@@ -11,7 +11,7 @@ from io import StringIO
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-change-this'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kushwaha_user:kushwaha123@localhost:5432/kushwaha_academy'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///kushwaha_academy.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size

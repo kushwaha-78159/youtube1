@@ -1,20 +1,22 @@
-# Create articles.html
-cat > templates/articles.html << 'EOF'
+
 {% extends "base.html" %}
 
-{% block title %}Articles{% endblock %}
+{% block title %}Articles - Technology & Finance Insights{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Articles</h1>
-
-<div class="row mb-4">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <form method="GET" class="row">
+<div class="container mt-4">
+    <div class="text-center mb-5" data-aos="fade-up">
+        <h1 class="display-4 fw-bold">Latest Articles</h1>
+        <p class="lead text-muted">Explore technology, finance, and personal growth insights</p>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card p-4 shadow-sm border-0 rounded-4">
+                <form method="GET" class="row g-3">
                     <div class="col-md-5">
-                        <label for="category" class="form-label">Category</label>
-                        <select name="category" id="category" class="form-select">
+                        <label class="form-label fw-bold">Category</label>
+                        <select name="category" class="form-select">
                             <option value="all" {% if current_category == 'all' %}selected{% endif %}>All Categories</option>
                             {% for cat in categories %}
                             <option value="{{ cat }}" {% if current_category == cat %}selected{% endif %}>{{ cat|capitalize }}</option>
@@ -22,43 +24,56 @@ cat > templates/articles.html << 'EOF'
                         </select>
                     </div>
                     <div class="col-md-5">
-                        <label for="language" class="form-label">Language</label>
-                        <select name="language" id="language" class="form-select">
+                        <label class="form-label fw-bold">Language</label>
+                        <select name="language" class="form-select">
                             <option value="all" {% if current_language == 'all' %}selected{% endif %}>All Languages</option>
                             {% for lang in languages %}
                             <option value="{{ lang }}" {% if current_language == lang %}selected{% endif %}>{{ lang|capitalize }}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <label class="form-label">&nbsp;</label>
-                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn-primary-custom w-100">Filter</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    {% for article in articles.items %}
-    <div class="col-md-6 mb-4">
-        <div class="card h-100">
-            {% if article.thumbnail %}
-            <img src="{{ url_for('static', filename='uploads/' + article.thumbnail) }}" class="card-img-top" alt="{{ article.title }}">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title">{{ article.title }}</h5>
-                <p class="card-text">{{ article.content[:150]|safe }}...</p>
-                <a href="{{ url_for('article_detail', id=article.id) }}" class="btn btn-primary">Read More</a>
+    
+    <div class="row g-4">
+        {% for article in articles.items %}
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="blog-card">
+                <img src="{{ url_for('static', filename='uploads/' + article.thumbnail) if article.thumbnail else 'https://placehold.co/600x400/2563eb/white?text=Article' }}" class="blog-img" alt="{{ article.title }}">
+                <div class="blog-content">
+                    <span class="blog-category">{{ article.category|capitalize }}</span>
+                    <h3 class="blog-title">{{ article.title }}</h3>
+                    <p class="blog-excerpt">{{ article.content[:120]|striptags }}...</p>
+                    <a href="{{ url_for('article_detail', id=article.id) }}" class="btn-primary-custom" style="padding: 0.5rem 1.5rem;">Read More →</a>
+                </div>
             </div>
         </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <i class="fas fa-newspaper fa-4x text-muted mb-3"></i>
+            <h3>No Articles Yet</h3>
+            <p>Check back soon for insightful articles!</p>
+        </div>
+        {% endfor %}
     </div>
-    {% else %}
-    <div class="col-12">
-        <p class="text-center">No articles found.</p>
-    </div>
-    {% endfor %}
+    
+    {% if articles.pages > 1 %}
+    <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% for page in articles.iter_pages() %}
+                {% if page %}
+                    <li class="page-item {% if page == articles.page %}active{% endif %}">
+                        <a class="page-link" href="{{ url_for('articles', page=page, category=current_category, language=current_language) }}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 {% endblock %}
-EOF
