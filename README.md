@@ -47,6 +47,37 @@ A complete dynamic website built with Flask, PostgreSQL, and Bootstrap for manag
 - Python 3.8+
 - PostgreSQL (optional - SQLite works too)
 - pip (Python package manager)
+┌─────────────────────────────────────────────────────────────┐
+│  [Kushwaha Academy]  Home Articles Blogs Stories NISM Test  │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Exploring Technology Insights & Personal Growth           │
+│                                                             │
+│  Discover thought-provoking content on technology...       │
+│                                                             │
+│  [Get Started →]  [Explore Courses]                        │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│  12,500          25           150          1,000           │
+│  Happy Students   Courses     Articles     Mock Tests      │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Featured Technology & Growth Content                      │
+│                                                             │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│  │ NISM Mock   │ │ NISM Books  │ │ AI-Powered  │          │
+│  │ Test        │ │ in Hinglish │ │ Tools       │          │
+│  └─────────────┘ └─────────────┘ └─────────────┘          │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│  Explore Content Categories                                 │
+│                                                             │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│  │ Technology  │ │  Finance    │ │ Personal    │          │
+│  │             │ │             │ │ Growth      │          │
+│  └─────────────┘ └─────────────┘ └─────────────┘          │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
 
 ## 🚦 Installation
 
