@@ -41,6 +41,14 @@ A complete dynamic website built with Flask, PostgreSQL, and Bootstrap for manag
 - **Authentication**: Flask-Login
 - **Markdown Support**: Python-Markdown
 - **File Uploads**: Werkzeug
+- kushwaha_academy/
+├── app.py              # Main application
+├── models.py           # Database models
+├── static/             # CSS, images, uploads
+├── templates/          # HTML templates
+│   ├── admin/          # Admin panel
+│   └── auth/           # Login/Register
+└── requirements.txt    # Dependencies
 
 ## 📋 Prerequisites
 
